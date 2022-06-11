@@ -1,11 +1,10 @@
 //import { Attacking } from "./playerStates.js" 
-import { Running } from "./playerStates.js"
-import { Sitting } from "./playerStates.js";
+import { Jumping, Standing, Running, Sitting, Attacking } from "./playerStates.js";
 export class Player {
 
     constructor(game){
         this.game = game;
-        this.width = 110;
+        this.width = 150;
         this.height = 114;
         this.x = 0;
         this.y = this.game.height - this.height;
@@ -14,14 +13,18 @@ export class Player {
         this.image = document.getElementById('playerId')
         this.frameX = 0
         this.frameY = 0
+        this.maxFrame = 8
         this.speed = 0;
         this.maxSpeed = 5;
-        this.states = [ new Sitting(),new Running(this)]
+        this.fps = 20
+        this.frameInterval = 1000/this.fps
+        this.frameTimer = 0
+        this.states = [ new Standing(this), new Sitting(this),new Running(this), new Jumping(this), new Attacking(this)]
         this.currentState = this.states[0]
         this.currentState.enter()
     }
 
-    update(input){
+    update(input, deltaTime){
         this.currentState.handleInput(input)
         //Movimiento horizontal
         this.x += this.speed
@@ -37,10 +40,21 @@ export class Player {
         if(!this.onGround()) this.vy += this.weight
         else this.vy = 0
 
+        //Animation
+        if(this.frameTimer > this.frameInterval){
+            this.frameTimer = 0
+            if(this.frameX < this.maxFrame) this.frameX++
+            else this.frameX = 0
+        }else{
+            this.frameTimer += deltaTime
+        }
+        
+
     }
 
     draw(context){ 
-        context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height,  this.x, this.y, this.width, this.height )
+        context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, 
+            this.width, this.height,  this.x, this.y, this.width, this.height )
         
        
     }
