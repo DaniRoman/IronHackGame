@@ -26,11 +26,11 @@ export class Standing extends State{
     handleInput(input){
         
         if(input.includes('ArrowRight') || input.includes('ArrowLeft')){
-            this.player.setState(states.RUNNING)
+            this.player.setState(states.RUNNING, 1)
         }
-        else if(input.includes('ArrowDown'))this.player.setState(states. SITTING)
-        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING)
+        else if(input.includes('ArrowDown'))this.player.setState(states. SITTING, 0)
+        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
+        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 0)
     }
 }
 export class Sitting extends State{
@@ -46,12 +46,12 @@ export class Sitting extends State{
     }
 
     handleInput(input){
-        if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING)
+        if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING, 0)
         else if(input.includes('ArrowRight') || input.includes('ArrowLeft')){
-            this.player.setState(states.RUNNING)
+            this.player.setState(states.RUNNING, 1)
         }
-        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING)
+        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
+        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 0)
     }
 }
 
@@ -69,10 +69,10 @@ export class Running extends State{
     }
     
     handleInput(input){
-        if(input.length === 0  && this.player.onGround()){this.player.setState(states.SITTING)
+        if(input.length === 0  && this.player.onGround()){this.player.setState(states.SITTING, 0)
         }
-        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING)
+        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
+        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 1.2)
     }
 }
 
@@ -90,8 +90,8 @@ export class Jumping extends State{
     }
     
     handleInput(input){
-        if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING)
+        if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING, 0)
+        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 1.2)
     }
 }
 
@@ -108,8 +108,8 @@ export class Jumping extends State{
     }
 
     handleInput(input){
-        if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING)
-        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING)
+        if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING, 0)
+        else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
         
     }
 }

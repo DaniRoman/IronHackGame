@@ -8,7 +8,7 @@ window.addEventListener("load", function(){
     /**Logicas 2d */
     const ctx = canvas.getContext("2d");
     
-    canvas.width = 800
+    canvas.width = 600
     canvas.height = 500
 
     //Clase juego donde paso lo parámetro de este e inicializare los objetos dentro de este
@@ -19,7 +19,8 @@ window.addEventListener("load", function(){
             this.width = width
             this.height = height
             this.groundMargin = 42
-            this.speed = 3
+            this.speed = 0
+            this.maxSpeed = 3
             this.player = new Player(this)
             this.input = new InputHandler()
             this.backGround = new Background(this)
