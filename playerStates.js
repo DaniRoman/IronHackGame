@@ -18,6 +18,8 @@ export class Standing extends State{
         this.player = player
     }
     enter(){
+        this.player.frameX = 0
+        this.player.maxFrame = 3
         this.player.frameY = 0;
     }
 
@@ -38,6 +40,8 @@ export class Sitting extends State{
         this.player = player
     }
     enter(){
+        this.player.frameX = 0
+        this.player.maxFrame = 6
         this.player.frameY = 6;
     }
 
@@ -59,6 +63,8 @@ export class Running extends State{
     }
 
     enter(){
+        this.player.frameX = 0
+        this.player.maxFrame = 5
         this.player.frameY = 1;
     }
     
@@ -78,6 +84,8 @@ export class Jumping extends State{
     }
 
     enter(){
+        this.player.frameX = 0
+        this.player.maxFrame = 9
         this.player.frameY = 2;
     }
     
@@ -94,6 +102,8 @@ export class Jumping extends State{
         this.player = player
     }
     enter(){
+        this.player.frameX = 0
+        this.player.maxFrame = 9
         this.player.frameY = 4;
     }
 

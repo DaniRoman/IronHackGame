@@ -1,5 +1,6 @@
 import { Player } from './player.js'
-import { InputHandler} from "./input.js"
+import { InputHandler } from "./input.js"
+import { Background} from "./background.js" 
 /**Inicio juego */
 window.addEventListener("load", function(){
 
@@ -8,7 +9,7 @@ window.addEventListener("load", function(){
     const ctx = canvas.getContext("2d");
     
     canvas.width = 800
-    canvas.height = 600
+    canvas.height = 500
 
     //Clase juego donde paso lo parámetro de este e inicializare los objetos dentro de este
     class Game{
@@ -17,18 +18,24 @@ window.addEventListener("load", function(){
             //Aqui cargo lo que contendra el juego (incluidos los personajes)
             this.width = width
             this.height = height
+            this.groundMargin = 42
+            this.speed = 3
             this.player = new Player(this)
             this.input = new InputHandler()
+            this.backGround = new Background(this)
+           
         }
 
         //Metódo donde hare update de todos los objetos del juego
         update(deltaTime){
+            this.backGround.update()
             this.player.update(this.input.keys, deltaTime)
         }
 
         //Método donde pintar todos lo objetos del juego
         draw(context){
-          this.player.draw(context)
+            this.backGround.draw(context)
+            this.player.draw(context)
         }
 
     }

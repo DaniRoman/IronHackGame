@@ -7,16 +7,16 @@ export class Player {
         this.width = 150;
         this.height = 114;
         this.x = 0;
-        this.y = this.game.height - this.height;
+        this.y = this.game.height - this.height - this.game.groundMargin;
         this.weight = 1
         this.vy = 0
         this.image = document.getElementById('playerId')
         this.frameX = 0
         this.frameY = 0
-        this.maxFrame = 8
+        this.maxFrame
         this.speed = 0;
         this.maxSpeed = 5;
-        this.fps = 20
+        this.fps = 10
         this.frameInterval = 1000/this.fps
         this.frameTimer = 0
         this.states = [ new Standing(this), new Sitting(this),new Running(this), new Jumping(this), new Attacking(this)]
@@ -60,7 +60,7 @@ export class Player {
     }
 
     onGround(){
-        return this.y >= this.game.height - this.height
+        return this.y >= this.game.height - this.height - this.game.groundMargin
 
     }
 
