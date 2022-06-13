@@ -1,11 +1,8 @@
 export class InputHandler {
-
-    constructor(){
-
+    constructor(game){
+        this.game = game
         this.keys = []
-        
         window.addEventListener('keydown', e=>{
-            
             console.log(e.key, this.keys)
             /**Meto las teclas en la array solo las que no estan indexOf(e.key)  === -1)  */
             if((e.key === 'ArrowDown' ||
@@ -15,11 +12,10 @@ export class InputHandler {
                 e.key === 'Control'
                 )&& this.keys.indexOf(e.key)  === -1){
                 this.keys.push(e.key)
-            }
+            }else if (e.key === "d") this.game.debug = !this.game.debug
         })
 
         window.addEventListener('keyup', e=>{
-            
             console.log(e.key, this.keys)
             /**Meto las teclas en la array solo las que no estan indexOf(e.key)  === -1)  */
             if( e.key === 'ArrowDown'|| 

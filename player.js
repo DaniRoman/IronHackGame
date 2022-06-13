@@ -5,7 +5,7 @@ export class Player {
     constructor(game){
         this.game = game;
         this.width = 150;
-        this.height = 114;
+        this.height = 110;
         this.x = 0;
         this.y = this.game.height - this.height - this.game.groundMargin;
         this.weight = 1
@@ -16,7 +16,7 @@ export class Player {
         this.maxFrame
         this.speed = 0;
         this.maxSpeed = 5;
-        this.fps = 10
+        this.fps = 20
         this.frameInterval = 1000/this.fps
         this.frameTimer = 0
         this.states = [ new Standing(this), new Sitting(this),new Running(this), new Jumping(this), new Attacking(this)]
@@ -25,6 +25,7 @@ export class Player {
     }
 
     update(input, deltaTime){
+        this.checkCollision()
         this.currentState.handleInput(input)
         //Movimiento horizontal
         this.x += this.speed
@@ -53,6 +54,7 @@ export class Player {
     }
 
     draw(context){ 
+        if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height)
         context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, 
             this.width, this.height,  this.x, this.y, this.width, this.height )
         
@@ -68,5 +70,21 @@ export class Player {
         this.currentState = this.states[state]
         this.currentState.enter()
         this.game.speed = this.game.maxSpeed * speed
+    }
+
+    checkCollision(){
+        this.game.enemies.forEach(enemy => {
+            if(
+                enemy.x < this.x + this.width &&
+                enemy.x + enemy.width > this.x &&
+                enemy.y < this.y + this.height &&
+                enemy.y + enemy.height > this.y
+            ){
+                enemy.markedForDeletion = true
+                this.game.score ++
+            }else{
+
+            }
+        })
     }
 }

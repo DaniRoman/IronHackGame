@@ -41,7 +41,7 @@ export class Sitting extends State{
     }
     enter(){
         this.player.frameX = 0
-        this.player.maxFrame = 6
+        this.player.maxFrame = 0
         this.player.frameY = 6;
     }
 
