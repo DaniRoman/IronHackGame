@@ -10,7 +10,7 @@ window.addEventListener("load", function(){
     /**Logicas 2d */
     const ctx = canvas.getContext("2d");
     
-    canvas.width = 600
+    canvas.width = 800
     canvas.height = 500
 
     //Clase juego donde paso lo parámetro de este e inicializare los objetos dentro de este
@@ -27,16 +27,19 @@ window.addEventListener("load", function(){
             this.input = new InputHandler(this)
             this.UI = new UI(this)
             this.backGround = new Background(this)
+            this.lives = 3
             this.enemies = []
             this.enemyTimer = 0
             this.enemyInterval = 3000
             this.debug = true
             this.score = 0
             this.fontColor = 'black'
+            this.gameOver = false
         }
 
         //Metódo donde hare update de todos los objetos del juego
         update(deltaTime){
+            this.UI.update(deltaTime)
             this.backGround.update()
             this.player.update(this.input.keys, deltaTime)
             /**Display enemies */
@@ -79,7 +82,7 @@ window.addEventListener("load", function(){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         game.draw(ctx)
         game.update(deltaTime)
-        requestAnimationFrame(animate)
+        if(!game.gameOver) requestAnimationFrame(animate)
     }
 
     animate(0)

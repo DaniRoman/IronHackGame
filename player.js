@@ -16,12 +16,13 @@ export class Player {
         this.maxFrame
         this.speed = 0;
         this.maxSpeed = 5;
-        this.fps = 20
+        this.fps = 25
         this.frameInterval = 1000/this.fps
         this.frameTimer = 0
         this.states = [ new Standing(this), new Sitting(this),new Running(this), new Jumping(this), new Attacking(this)]
         this.currentState = this.states[0]
         this.currentState.enter()
+        this.colision = false
     }
 
     update(input, deltaTime){
@@ -75,15 +76,20 @@ export class Player {
     checkCollision(){
         this.game.enemies.forEach(enemy => {
             if(
-                enemy.x < this.x + this.width &&
+                enemy.x < this.x + this.width - 50 &&
                 enemy.x + enemy.width > this.x &&
-                enemy.y < this.y + this.height &&
+                enemy.y < this.y + this.height - 40 &&
                 enemy.y + enemy.height > this.y
             ){
-                enemy.markedForDeletion = true
-                this.game.score ++
-            }else{
-
+                //enemy.markedForDeletion = true
+                if(this.currentState === this.states[4]) this.game.score ++
+                else{
+                    this.game.lives--
+                    console.log(this.game.lives)
+                    console.log(this.game.gameOver)
+                    enemy.enemyState()
+                    if(this.game.lives <=0) this.game.gameOver = true
+                }
             }
         })
     }

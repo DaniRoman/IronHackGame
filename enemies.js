@@ -23,11 +23,6 @@ class Enemy{
         if(this.x + this.width < 0) this.markedForDeletion = true
     }
 
-    draw(context){
-        if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height)
-        context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height)
-    }
-
 }
 
 export class FlyingEnemy extends Enemy{
@@ -40,16 +35,31 @@ export class FlyingEnemy extends Enemy{
         this.y = Math.random() * (this.game.height + 100) * 0.5
         this.speedX = Math.random() + 1
         this.speedY = 0
+        this.frameY = 0 
+        this.frameX = 0
         this.maxFrame = 5
         this.image = document.getElementById("enemy_fly")
         this.angle = 0
         this.va = Math.random() * 0.1 + 0.1
     }
 
+    draw(context){
+        if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height)
+        context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height)
+    }
+
     update(deltaTime){
         super.update(deltaTime)
         this.angle += this.va
         this.y += Math.sin(this.angle)
+    }
+
+    enemyState(){
+        this.maxFrame = 6
+        this.frameY = 1
+        setTimeout(()=>{
+           this.markedForDeletion = true
+        },600)
     }
 }
 
@@ -72,11 +82,19 @@ export class GroundEnemy extends Enemy{
     update(deltaTime){
         super.update(deltaTime)
         
+        
     }
     
     draw(context){
         if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height)
         context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height)
+    }
+
+    enemyState(){
+        this.frameY = 3
+        setTimeout(()=>{
+           this.markedForDeletion = true
+        },500)
     }
 }
 
