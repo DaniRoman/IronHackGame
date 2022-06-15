@@ -23,6 +23,9 @@ export class Player {
         this.currentState = this.states[0]
         this.currentState.enter()
         this.colision = false
+        this.jumpSound = document.getElementById("jumpMp3")
+        this.hitSound = document.getElementById("hitMp3")
+        
     }
 
     update(input, deltaTime){
@@ -30,6 +33,8 @@ export class Player {
         this.currentState.handleInput(input)
         //Movimiento horizontal
         this.x += this.speed
+        if(input.includes('ArrowUp') && this.onGround())this.jumpSound.play()
+
         if(input.includes('ArrowRight')) this.speed = this.maxSpeed
         else if(input.includes('ArrowLeft')) this.speed = -this.maxSpeed
         else this.speed = 0
@@ -39,8 +44,10 @@ export class Player {
         
         if(input.includes('ArrowUp') && this.onGround()) this.vy -= 20
         this.y += this.vy
+        
         if(!this.onGround()) this.vy += this.weight
         else this.vy = 0
+        
 
         //Animation
         if(this.frameTimer > this.frameInterval){
@@ -76,19 +83,29 @@ export class Player {
     checkCollision(){
         this.game.enemies.forEach(enemy => {
             if(
-                enemy.x < this.x + this.width - 50 &&
+                !enemy.haveColision&&
+                enemy.x < this.x + this.width - 80 &&
                 enemy.x + enemy.width > this.x &&
-                enemy.y < this.y + this.height - 40 &&
-                enemy.y + enemy.height > this.y
+                enemy.y < this.y + this.height - 80 &&
+                enemy.y + enemy.height > this.y + 80
             ){
-                //enemy.markedForDeletion = true
-                if(this.currentState === this.states[4]) this.game.score ++
-                else{
-                    this.game.lives--
-                    console.log(this.game.lives)
-                    console.log(this.game.gameOver)
+                enemy.haveColision = true
+                if(this.currentState === this.states[4]){
+                    enemy.deatSound()
+                    this.game.score ++
                     enemy.enemyState()
-                    if(this.game.lives <=0) this.game.gameOver = true
+                } 
+                else{
+                    this.hitSound.play()
+                    this.game.lives--
+                    
+                    enemy.enemyState()
+                    if(this.game.lives <=0) {
+                        this.game.gameOver = true
+                        this.game.music.pause()
+                        this.game.gameOverMusic.play()
+                    }
+                    console.log('fin juego ', this.game.gameOver)
                 }
             }
         })

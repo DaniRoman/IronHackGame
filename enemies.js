@@ -1,6 +1,7 @@
 class Enemy{
 
     constructor(){
+        this.haveColision = false
         this.frameX = 0
         this.frameY = 0
         this.fps = 20
@@ -23,6 +24,14 @@ class Enemy{
         if(this.x + this.width < 0) this.markedForDeletion = true
     }
 
+    deatSound(){
+        let flingSource = document.getElementById("flyEnemyHit") 
+        let gostSource = document.getElementById("ghostEnemyHit")
+        
+        if(this.type==="flying") flingSource.play()
+        else if(this.type==="ghost") gostSource.play()
+    }
+
 }
 
 export class FlyingEnemy extends Enemy{
@@ -41,6 +50,8 @@ export class FlyingEnemy extends Enemy{
         this.image = document.getElementById("enemy_fly")
         this.angle = 0
         this.va = Math.random() * 0.1 + 0.1
+        this.flyDeathSound = document.getElementById("flyEnemyHit")
+        this.type = "flying"
     }
 
     draw(context){
@@ -66,6 +77,7 @@ export class FlyingEnemy extends Enemy{
 export class GroundEnemy extends Enemy{
     constructor(game){
         super()
+        
         this.game = game
         this.width = 100
         this.height = 100
@@ -76,7 +88,8 @@ export class GroundEnemy extends Enemy{
         this.speedY = 0
         this.maxFrame = 6
         this.image = document.getElementById("enemy_ghost")
-        
+        this.ghostDeathSound = document.getElementById("ghostEnemyHit")
+        this.type = "ghost"
     }
 
     update(deltaTime){
@@ -96,5 +109,7 @@ export class GroundEnemy extends Enemy{
            this.markedForDeletion = true
         },500)
     }
+
+    
 }
 

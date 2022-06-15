@@ -25,12 +25,20 @@ export class UI {
             context.drawImage(this.livesImage, this.frameX * this.width, 0, this.width, this.height, 20 * i * 2  ,50, this.width, this.height)
         }
         //GAmeOver
-        if (this.game.gameOver){
+        /*if (this.game.gameOver){
             context.textAlign = 'center'
             context.font = this.fontSize * 2 + 'px ' + this.fontFamily
             context.fillText('Game Over Pillastre', this.game.width * 0.5, this.game.height * 0.5 + 20)
-        }
+        }*/
     }
+
+    drawOver(context){  
+        console.log('context',context) 
+        context.textAlign = 'center'
+        context.font = this.fontSize * 4 + 'px ' + this.fontFamily
+        context.fillText('Game Over', this.game.width * 0.5, this.game.height * 0.5 + 20)
+        }
+        
     update(deltaTime){
         if(this.frameTimer > this.frameInterval){
             this.frameTimer = 0
@@ -39,5 +47,6 @@ export class UI {
         }else{
             this.frameTimer += deltaTime
         }
+        
     }
 }

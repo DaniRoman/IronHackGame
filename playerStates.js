@@ -9,6 +9,7 @@ const states = {
 class State{
     constructor(state){
         this.state = state
+        this.swordMusic = document.getElementById("swordMp3")
     }
 }
 export class Standing extends State{
@@ -30,7 +31,9 @@ export class Standing extends State{
         }
         else if(input.includes('ArrowDown'))this.player.setState(states. SITTING, 0)
         else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 0)
+        else if(input.includes('Control')){
+            this.player.setState(states.  ATTACKING, 0)
+            this.swordMusic.play()}
     }
 }
 export class Sitting extends State{
@@ -51,7 +54,9 @@ export class Sitting extends State{
             this.player.setState(states.RUNNING, 1)
         }
         else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 0)
+        else if(input.includes('Control')){
+        this.swordMusic.play()
+        this.player.setState(states.  ATTACKING, 0)}
     }
 }
 
@@ -72,8 +77,10 @@ export class Running extends State{
         if(input.length === 0  && this.player.onGround()){this.player.setState(states.SITTING, 0)
         }
         else if(input.includes('ArrowUp'))this.player.setState(states.  JUMPING, 1)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 1.2)
-    }
+        else if(input.includes('Control')){
+            this.player.setState(states.  ATTACKING, 1.2)
+            this.swordMusic.play()}
+        }
 }
 
 export class Jumping extends State{
@@ -91,7 +98,9 @@ export class Jumping extends State{
     
     handleInput(input){
         if(input.length === 0 && this.player.onGround())this.player.setState(states.STANDING, 0)
-        else if(input.includes('Control'))this.player.setState(states.  ATTACKING, 1.2)
+        else if(input.includes('Control')){
+            this.player.setState(states.  ATTACKING, 1.2)
+            this.swordMusic.play()}
     }
 }
 
