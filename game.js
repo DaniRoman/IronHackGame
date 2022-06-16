@@ -21,7 +21,7 @@ export class Game{
         this.enemies = []
         this.enemyTimer = 0
         this.enemyInterval = 3000
-        this.debug = true
+        this.debug = false
         this.score = 0
         this.fontColor = 'black'
         this.gameOver = false
@@ -56,7 +56,7 @@ export class Game{
     draw(context){
         this.backGround.draw(context)
         this.music.volume = 0.3
-        this.music.play()
+        //this.music.play()
         
         this.player.draw(context)
         this.enemies.forEach(enemy => enemy.draw(context))

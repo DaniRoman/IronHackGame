@@ -1,18 +1,80 @@
-*{
+html{
+    width:100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+body{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
 }
 
-#canvas1{
-    border:5px solid black ;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+
+.container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    background-image:url("./img/background2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:85% 1fr;
+    font-size: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container2{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    background-image:url("./img/background.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:85% 1fr;
+    font-size: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.nada{
+    grid-area: nada;
+}
+.canvas{
+    
+    padding: 120px 0 0 44px;
+    grid-column: 2/3;
+    grid-row:1/2;
     max-width: 100%;
     max-height: 100%;
     font-family: 'Creepster', cursive;
 }
 
-#playerId, #layer1, #layer2, #layer3, #layer4, #layer5, #layer6, #layer7, #layer8, #layer9, #layer10, #layer11, #enemy_fly, #enemy_ghost, #heart{display: none;}
+.hidden{
+    display: none;
+}
+
+.btns{
+    display: flex;
+    justify-content: end; 
+    grid-row:2/3;
+    grid-column: 2/3;
+}
+
+#canvas1{
+    border: 2px solid #dadada;
+    border-radius: 7px;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 30px #9ecaed;
+}
+
+
+
+
+ #playerId, #layer1, #layer2, #layer3, #layer4, #layer5, #layer6, #layer7, #layer8, #layer9, #layer10, #layer11, #enemy_fly, #enemy_ghost, #heart{display: none;}
+
