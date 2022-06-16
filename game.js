@@ -1,7 +1,7 @@
 import { Player } from './player.js'
 import { InputHandler } from "./input.js"
 import { Background} from "./background.js" 
-import { FlyingEnemy, GroundEnemy} from "./enemies.js"
+import { FlyingEnemy, FlyingSkull, GroundEnemy, Demon} from "./enemies.js"
 import { UI } from "./UI.js"
 //Clase juego donde paso lo parámetro de este e inicializare los objetos dentro de este
 export class Game{
@@ -17,7 +17,7 @@ export class Game{
         this.input = new InputHandler(this)
         this.UI = new UI(this)
         this.backGround = new Background(this)
-        this.lives = 3
+        this.lives = 4
         this.enemies = []
         this.enemyTimer = 0
         this.enemyInterval = 3000
@@ -70,7 +70,12 @@ export class Game{
     }
 
     addEnemy(){
-        if(this.speed > 0 && Math.random() < 0.5) this.enemies.push(new GroundEnemy(this))
-        this.enemies.push(new FlyingEnemy(this))
+        if(this.speed > 0 && Math.random() < 0.8){
+            this.enemies.push(new GroundEnemy(this))
+            this.enemies.push(new FlyingSkull(this))
+        }
+        if(this.speed > 0 && Math.random() < 0.5)this.enemies.push(new Demon(this))
+        
+        this.enemies.push(new FlyingEnemy(this))  
     }
 }

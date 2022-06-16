@@ -97,7 +97,7 @@ export class Player {
                     
                     enemy.deatSound()
                     this.game.score ++
-                    if(this.game.score === 3){
+                    if(this.game.score === 10){
                         this.game.gameWin = true
                     }
                     
