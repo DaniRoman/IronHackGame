@@ -38,13 +38,17 @@ export class UI {
         context.font = this.fontSize * 4 + 'px ' + this.fontFamily
         context.fillText('Game Over', this.game.width * 0.5, this.game.height * 0.5 + 20)
         }
-    /*
+    
     drawWin(context){  
         console.log('context',context) 
         context.textAlign = 'center'
         context.font = this.fontSize * 4 + 'px ' + this.fontFamily
         context.fillText('You win', this.game.width * 0.5, this.game.height * 0.5 + 20)
-    }*/
+        this.game.music.pause()
+        this.game.musicWin.volume = 0.2
+        this.game.musicWin.play()
+        
+    }
 
     update(deltaTime){
         if(this.frameTimer > this.frameInterval){

@@ -25,6 +25,8 @@ export class Game{
         this.score = 0
         this.fontColor = 'black'
         this.gameOver = false
+        this.gameWin = false
+        this.musicWin = document.getElementById("win")
         this.music = document.getElementById("mainMusic")
         this.gameOverMusic = document.getElementById("gameOverSound")
     }
@@ -49,6 +51,10 @@ export class Game{
     }
     checkEnd(context){
         if(this.gameOver)this.UI.drawOver(context)
+        
+    }
+    checkWin(context){
+        if(this.gameWin)this.UI.drawWin(context)
         
     }
 

@@ -94,8 +94,14 @@ export class Player {
             ){
                 enemy.haveColision = true
                 if(this.currentState === this.states[4]){
+                    
                     enemy.deatSound()
                     this.game.score ++
+                    if(this.game.score === 3){
+                        this.game.gameWin = true
+                    }
+                    
+                    console.log('win?' + this.game.gameWin)
                     enemy.enemyState()
                 } 
                 else{
@@ -108,7 +114,7 @@ export class Player {
                         this.game.music.pause()
                         this.game.gameOverMusic.play()
                     }
-                    console.log('fin juego ', this.game.gameOver)
+                   
                 }
             }
         })

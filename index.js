@@ -17,37 +17,44 @@ import { Game } from './game.js'
 
     document.getElementById("boton")
     .addEventListener('click',()=>{
-        console.log(gameStart)
+        if(game.gameOver || game.gameWin){
+            game.gameOver = false
+            game.gameWin = false
+            game.score = 0
+            game.lives = 3
+            animate(0)
+        }
+        
         gameStart=!gameStart
         if(gameStart){
             game.music.play()
         }else game.music.pause()
-        console.log(gameStart)
         canvas.classList.toggle("hidden")
         document.querySelector("#container").classList.toggle("container2")
+        
         //document.querySelector("#container").classList.add("container2")
     })
 
-
     document.getElementById("botonRes")
     .addEventListener('click',()=>{
-        if(game.gameOver){
+        if(game.gameOver || game.gameWin){
             game.gameOver = false
+            game.gameWin = false
             game.lives = 3
+            game.score = 0
             animate(0)
         }
     })
     
-    
- 
     function animate(timeStamp){
         const deltaTime = timeStamp - lastTime
         lastTime = timeStamp
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         game.draw(ctx)
         game.update(deltaTime)
+        game.checkWin(ctx)
         game.checkEnd(ctx)
-        if(!game.gameOver) requestAnimationFrame(animate)
+        if(!game.gameOver&& !game.gameWin) requestAnimationFrame(animate)
     }
 
     animate(0)
