@@ -42,6 +42,7 @@ import { Game } from './game.js'
             game.gameWin = false
             game.lives = 3
             game.score = 0
+            game.music.play()
             animate(0)
         }
     })
