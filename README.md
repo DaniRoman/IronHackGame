@@ -7,8 +7,8 @@
   . Implemented with vanilla JavasCript to assimilate and put into practice the basic and advanced Js methods and concepts as OOP, advanced array          methods... 
 
 ### ***Challenges faced***
-  
-<img width="640" alt="Screenshot 2022-09-12 at 13 33 32" src="https://user-images.githubusercontent.com/66803474/189708742-8213912e-5300-4462-a9e2-303df7b8acff.png">
+  . Implementing a method of changing state where the player changes movement depending on the key pressed has been a challenge, which I'd like to explore further and implement with other game features.
+The main function used to render on loop the game is a  
 
 
 ### ***features to implement in the future***
