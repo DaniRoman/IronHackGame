@@ -1,5 +1,7 @@
 # IronHackGame
 
+![GitHub repo size](https://img.shields.io/github/repo-size/Da-zeros/IronHackGame?style=plastic)
+
 ### ___What it does?___
   . This is the first Ironhack project, as it name does is a game deployed in git pages where you can play it.
 
@@ -33,4 +35,4 @@ Use the arrow keys to move the player left, right, up to jump and down to crouch
 [Frankslaboratory](https://www.youtube.com/c/Frankslaboratory/).
 
 
-/apm/dm/:packageName  
+
