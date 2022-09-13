@@ -23,3 +23,12 @@ Use the arrow keys to move the player left, right, up to jump and down to crouch
 <img width="500" alt="Screenshot 2022-09-12 at 13 33 32" src="https://user-images.githubusercontent.com/66803474/189879218-8aa5f6a9-8c3f-4be3-8eab-d35f703109c6.png">
 
 <img width="500" alt="Screenshot 2022-09-12 at 13 33 14" src="https://user-images.githubusercontent.com/66803474/189879238-13a1d447-322b-47c6-8d42-a1bb180dfae8.png">
+
+
+ 
+###  ***Credits***
+
+. I want to share the material that I found and that helped me a lot with the ideas of my project, I am very grateful to him for allowing me and helping me to shape my ideas. 
+
+[Frankslaboratory](https://www.youtube.com/c/Frankslaboratory/).
+
