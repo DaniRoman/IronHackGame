@@ -18,8 +18,8 @@ The main function used to render on loop the game is a
  . Just go to the pages and play the game, press the start button on the arcade machine to start, stop to restart the game from the beginning or in case of death restart to appear in the same place. 
 Use the arrow keys to move the player left, right, up to jump and down to crouch, control key to attack, some of the enemies only appear when the user moves so the faster you move the more enemies will appear. The player wins when he reaches a certain amount of score by killing monsters it's an easy mod so you only need to kill a few :) or die if you get hit 3 times, enjoy it!!!.
 
-<img width="250" alt="Screenshot 2022-09-12 at 13 32 21" src="https://user-images.githubusercontent.com/66803474/189878772-7283ac89-066a-41fe-b9a9-459ce9264264.png">
+<img width="500" alt="Screenshot 2022-09-12 at 13 32 21" src="https://user-images.githubusercontent.com/66803474/189879176-b4e1bdf2-c6f6-4863-96dd-8ba10697f613.png">
 
-<img width="250" alt="Screenshot 2022-09-12 at 13 33 32" src="https://user-images.githubusercontent.com/66803474/189878781-5b4bbfff-cced-4342-ba29-a2131176a732.png">
+<img width="500" alt="Screenshot 2022-09-12 at 13 33 32" src="https://user-images.githubusercontent.com/66803474/189879218-8aa5f6a9-8c3f-4be3-8eab-d35f703109c6.png">
 
-<img width="250" alt="Screenshot 2022-09-12 at 13 33 14" src="https://user-images.githubusercontent.com/66803474/189878802-3311e8a4-9eee-4f43-886a-9da41a79ee71.png">
+<img width="500" alt="Screenshot 2022-09-12 at 13 33 14" src="https://user-images.githubusercontent.com/66803474/189879238-13a1d447-322b-47c6-8d42-a1bb180dfae8.png">
